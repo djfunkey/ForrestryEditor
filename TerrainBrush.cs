@@ -13,7 +13,9 @@ public class TerrainBrush : MonoBehaviour {
   
   public void Init ()
   {
-    proj.
+    proj.orthographic = true;
+    proj.orthographicSize = 1f;
+    proj.aspectRatio = 1f;
   }
   
   private void Update ()
@@ -50,7 +52,7 @@ public class TerrainBrush : MonoBehaviour {
       int texSampleX = (int)(x * texWidth);
       int texSampleY = (int)(y * texHeight);
       
-    } while (GreyScaleAtPos(texSampleX, texSampleY) > rVal);
+    } while (GreyScaleAtPos(texSampleX, texSampleY) < rVal);
     
     float posX = x * proj.orthographicSize + hit.point.x;
     float posZ = y * proj.orthographicSize + hit.point.y;
