@@ -4,29 +4,16 @@ public class TreeData : MonoBehaviour {
   public Gameobject prefab;
   public bool randomHeight = false;
   public bool randomWidth = false;
+  public bool randomRotation = false;
   
   private float heightMinLimit = 0f, heightMaxLimit = 1f;
   private float heightMinVal, heightMaxVal;
   private float widthMinLimit = 0f, widthMaxLimit = 1f;
   private float widthMinVal, widthMaxVal;
+  private float depth = 0f;r
   
-  public float GetHeight ()
-  {
-    float val = 0f;
-    if (!randomHeight)
-      val = 1f;
-    else
-      val = Random.Range(heightMinVal, heightMaxVal);
-    return val;
-  }
-  
-  public float GetWidth ()
-  {
-    float val = 0f;
-    if (!randomWidth)
-      val = 1f;
-    else
-      val = Random.Range(widthMinVal, widthMaxVal);
-    return val;
-  }
+  public bool IsEqual (TreePrototype tree) { return tree.prefab == prefab; }
+  public float GetHeight () { return (randomHeight) ? Random.Range (heightMinVal, heightMaxVal) : 1f; }  
+  public float GetWidth () { return (randomWidth) ? Random.Range(widthMinVal, widthMaxVal) : 1f; }  
+  public float GetRotation () { return (randomRotation) ? Random.value * 360 : 1f; }
 }
